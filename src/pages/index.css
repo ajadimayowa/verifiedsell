@@ -1,12 +1,10 @@
 .section-one {
     display: flex;
-    min-height: 70vh;
     flex-wrap: wrap;
   
 }
 
 .section-one .left {
- 
    width: 50%;
    padding-left: 5%;
 }
@@ -17,7 +15,11 @@
  }
 
  .section-one .right img {
-    height: 400px;
+    height: 250px;
+ }
+
+ .section-one .topBannerImg{
+    display: flex;
  }
 
 @media (max-width: 576px) {
@@ -36,6 +38,10 @@
 
       .section-one .right img {
         height: 250px;
+     }
+
+     .section-one .topBannerImg{
+        display: none;
      }
 
 

@@ -1,28 +1,43 @@
 .topBar {
-   z-index: 10;
+    z-index: 10;
+    /* background-color: pink; */
 }
 
-.topBar ul {
+.toggler {
+    /* z-index: 10; */
+    /* background-color: pink; */
+    display: none;
+}
+
+
+ul {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
     height: 100%;
-}
-
-.topBar span {
-display: none;
 }
 
 @media (max-width: 576px) {
     .topBar {
         z-index: 10;
+    }
+
+.toggler {
+        /* z-index: 10; */
+        /* background-color: pink; */
+        display: flex;
      }
-     
-    .topBar ul {
+
+    ul {
         display: none;
     }
 
-    .topBar span {
+    span {
         display: flex;
-        }
+    }
+
+    i {
+        display: flex;
+    }
 }

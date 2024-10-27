@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SignupModal from "../components/modals/signupmodal";
 import { Button, Card, FormControl } from "react-bootstrap";
 import TopBarUnAuth from "../components/bars/topbar";
-import team from '../assets/svgs/team.svg';
+import team from '../assets/images/ecommerce.png';
 import './index.css'
 import SideBarUnAuth from "../components/bars/sidebar";
 import LoginModal from "../components/modals/loginmodal";
@@ -12,6 +12,8 @@ import { IService } from "../interfaces/service";
 import { toast } from "react-toastify";
 import playstore from '../assets/pngs/playstore.png';
 import appstore from '../assets/pngs/appstore.png';
+import CategoryCard from "../components/cards/categoryCard";
+import ProductCard from "../components/cards/productCard";
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -83,15 +85,7 @@ const HomePage = () => {
 
     ]
 
-    const trendingServices = [
-        { title: 'Fashion & Tailoring', icon: 'bi bi-scissors', serviceId: '1',colorCode:'#00732E' },
-                { title: 'Software Development', icon: 'bi bi-pc-display-horizontal', serviceId: '2',colorCode:'#8F2900' },
-                { title: 'Marketing Skits', icon: 'bi bi-camera-reels', serviceId: '3',colorCode:'#687200' },
 
-                { title: 'Media Services & Jinggles', icon: 'bi bi-camera-reels', serviceId: '10',colorCode:'#BE5272' },
-                { title: 'Consultation Services', icon: 'bi bi-pc-display-horizontal', serviceId: '11',colorCode:'#687200' },
-                { title: 'Marketing Skits', icon: 'bi bi-camera-reels', serviceId: '12',colorCode:'#8F2900' }
-    ]
 
     const handleNextService = () => {
         setTransit(!transit)
@@ -128,44 +122,62 @@ const HomePage = () => {
                             loginClicked={() => setLoginModal(true)}
                             signUpClicked={() => setRegModal(true)}
                             togSide={() => setOnSideNav(!onSideNav)} />
-                        <div className="w-100 section-one bg-primary text-light px-4">
+                        <div className="w-100 section-one bg-primary text-light p-4">
 
                             <div className="left d-flex flex-column mt-4 gap-2">
                                 <h5 className="fw-bolder fs-1">
-                                    Empowering Nigerians with
-                                    Remote Work Opportunities
-                                    and Connections.
+                                    Welcome to Verified Sell – Your trusted marketplace for quality products,
+                                    by verified sellers.
                                 </h5>
                                 <p>
-                                    Work9ja connects Nigerian professionals
-                                    with remote
-                                    work opportunities, providing a seamless platform
-                                    for job seekers and  employers to   collaborate
-                                    and thrive in a flexible work environment.
+                                    Verified Sell connects you to a curated selection of reliable sellers offering top-quality products at competitive prices. Experience secure shopping and exceptional customer support with every purchase.
                                 </p>
                                 <div className="d-flex gap-2">
                                     <img role="button" src={playstore} height={50} />
                                     <img role="button" src={appstore} height={50} />
 
                                 </div>
-                                <form className="d-flex justify-content-end align-items-center mt-3" style={{ position: 'relative' }}>
-                                    <FormControl
-                                        style={{ minHeight: '3.5em' }}
-                                        placeholder="Search for any service..."
-                                        className="rounded fw-medium rounded-3 px-3 p-2 outline form-control-outline w-100 border border-1 border-grey"
-                                        id='email' name='email' />
-                                    <a className="text-light" href="#section-three" style={{ marginRight: '15px', position: 'absolute' }}>
-                                        <i className="bi bi-search p-2 px-3 rounded bg-secondary text-end"
-                                        ></i>
-                                    </a>
-
-                                </form>
                             </div>
-                            <div className="right d-flex mt-4 justify-content-center">
+                            <div className={`topBannerImg right mt-4 justify-content-center`}>
                                 <img className="" src={team} />
                             </div>
 
                         </div>
+
+
+
+                        <div className="w-100 section-one bg-light px-4">
+                            <h3 className="text-center w-100 p-3">Explore Categories</h3>
+                            <div className="d-flex w-100 align-items-center" style={{height:230, overflowX:'scroll', scrollbarWidth:'none'}}>
+                                <CategoryCard />
+
+                                <CategoryCard />
+                                <CategoryCard />
+                                <CategoryCard />
+                                <CategoryCard />
+
+                                <CategoryCard />
+                                <CategoryCard />
+                                <CategoryCard />
+                                <CategoryCard />
+                            </div>
+                        </div>
+
+                        <div className="w-100 section-one bg-light px-4 mt-4">
+                            <h3 className="text-center w-100 p-3">Hot Deals</h3>
+                            <div className="d-flex w-100 align-items-center  gap-2" style={{height:300, overflowX:'scroll', overflowY: 'hidden',scrollbarWidth:'none'}}>
+                                <ProductCard/>
+                                <ProductCard/>
+                                <ProductCard/>
+                                <ProductCard/>
+
+                                <ProductCard/>
+                                <ProductCard/>
+                                <ProductCard/>
+                            </div>
+                        </div>
+
+
 
                         {
                             services.length > 0 &&
@@ -209,8 +221,8 @@ const HomePage = () => {
                             <h3 className="text-center">Most Wanted Services</h3>
                             <div className="w-100 d-flex gap-2 px-2 justify-content-center align-items-center mt-4">
                                 {/* <i className="bi bi-chevron-left" role="button" onClick={() => handlePrevServicePop(currentServicePopular)}></i> */}
-                                <div  className="d-flex gap-3 w-100  align-items-center slide-form"
-                                
+                                <div className="d-flex gap-3 w-100  align-items-center slide-form"
+
                                     id="services"
                                     style={{ transition: 'all 1s ease-in', overflowX: 'scroll', maxWidth: '100%' }}>
                                     {
@@ -222,40 +234,7 @@ const HomePage = () => {
                                                     <Card.Body className="text-light">
                                                         <p className="niramit-semibold text-start"
                                                             style={{ textWrap: 'wrap', wordWrap: 'break-word' }}>{serv.title}</p>
-                                                        <Card className="bg-light d-flex justify-content-center align-items-center w-100" style={{minHeight:'7em'}}>
-                                                            <i className={` ${serv.icon}`} style={{ fontSize: '2em' }}></i>
-                                                        </Card>
-                                                    </Card.Body>
-                                                </Card>
-
-                                            </div>
-
-                                        ))
-                                    }
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div className="w-100 mt-3 section-three" id="section-three">
-
-                            <h3 className="text-center">Hot Services</h3>
-                            <div className="w-100 d-flex gap-2 px-2 justify-content-center align-items-center mt-4">
-                                {/* <i className="bi bi-chevron-left" role="button" onClick={() => handlePrevServicePop(currentServicePopular)}></i> */}
-                                <div  className="d-flex gap-3 w-100  align-items-center slide-form"
-                                
-                                    id="services"
-                                    style={{ transition: 'all 1s ease-in', overflowX: 'scroll', maxWidth: '100%' }}>
-                                    {
-                                        trendingServices.map((serv: any, index: number) => (
-                                            <div onClick={() => navigate(`/category-view/${serv._id}`)} key={index} role="button" className=""
-                                                style={{ minWidth: '10em', maxHeight: '15em', minHeight: '15em' }}>
-                                                <Card className="shadow-sm border-0"
-                                                    style={{ minWidth: '10em', minHeight: '14em', backgroundColor: serv.colorCode }}>
-                                                    <Card.Body className="text-light">
-                                                        <p className="niramit-semibold text-start"
-                                                            style={{ textWrap: 'wrap', wordWrap: 'break-word' }}>{serv.title}</p>
-                                                        <Card className="bg-light d-flex justify-content-center align-items-center w-100" style={{minHeight:'7em'}}>
+                                                        <Card className="bg-light d-flex justify-content-center align-items-center w-100" style={{ minHeight: '7em' }}>
                                                             <i className={` ${serv.icon}`} style={{ fontSize: '2em' }}></i>
                                                         </Card>
                                                     </Card.Body>
