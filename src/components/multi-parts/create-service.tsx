@@ -3,14 +3,11 @@ import { Button, Spinner } from "react-bootstrap";
 import { Field, Form, ErrorMessage, Formik } from "formik";
 import * as yup from 'yup';
 import { useNavigate } from "react-router-dom";
-import { IService } from "../../interfaces/service";
-import api from "../../app/controllers/api";
-import { toast } from "react-toastify";
 
 export const ServiceStepOne: React.FC<any> = ({ handleStepDataSubmit, data }) => {
 
     const navigate = useNavigate();
-    const [services, setServices] = useState<IService[]>([]);
+    // const [services, setServic] = useState<IService[]>([]);
     const [refData, setRefData] = useState(false);
 
     // const getServices = async (limit: number, page: number) => {
@@ -111,7 +108,7 @@ export const ServiceStepOne: React.FC<any> = ({ handleStepDataSubmit, data }) =>
                                 <label className="d-flex justify-content-between mt-3 w-100 fw-bold" htmlFor="password">
                                     Category
                                 </label>
-                                <div className="mt-1">
+                                {/* <div className="mt-1">
 
                                     <Field
                                         as="select"
@@ -129,7 +126,7 @@ export const ServiceStepOne: React.FC<any> = ({ handleStepDataSubmit, data }) =>
                                         name="category"
                                         component="div"
                                         className="text-danger fw-medium" />
-                                </div>
+                                </div> */}
 
                                 <div className="mt-3 w-100 text-center">
                                     <Button
