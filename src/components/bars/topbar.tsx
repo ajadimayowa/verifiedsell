@@ -5,7 +5,7 @@ import logo from '../../assets/pngs/vs-logo-light.png';
 import { useNavigate } from "react-router-dom";
 import CustomInput from "../inputs";
 
-const TopBarUnAuth: React.FC<any> = ({ loginClicked, togSide, signUpClicked }) => {
+const TopBarUnAuth: React.FC<any> = ({ loginClicked,signUpClicked }) => {
     const navigate = useNavigate();
 
     const links = [

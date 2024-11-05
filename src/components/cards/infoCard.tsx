@@ -1,7 +1,7 @@
-import React from "react";
+
 import styles from './infoCard.module.css';
 import laptopImg from '../../assets/images/apple-pro.jpg';
-import { Button, Image } from "react-bootstrap";
+import {Image } from "react-bootstrap";
 
 const InfoCard = () => {
     return (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SignupModal from "../components/modals/signupmodal";
-import { Button, Card, FormControl } from "react-bootstrap";
+import { Button, Card} from "react-bootstrap";
 import TopBarUnAuth from "../components/bars/topbar";
 import team from '../assets/images/ecommerce.png';
 import './index.css'

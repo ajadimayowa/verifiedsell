@@ -1,7 +1,7 @@
-import React from "react";
+
 import styles from './productCard.module.css'
 import laptopImg from '../../assets/images/laptop1.png';
-import { Badge, Button, Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 
 const ProductCard = () => {
     return (

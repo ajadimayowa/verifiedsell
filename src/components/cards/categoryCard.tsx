@@ -1,4 +1,3 @@
-import React from "react";
 import './catCard.css'
 import laptopImg from '../../assets/images/laptop1.png';
 import { Image } from "react-bootstrap";

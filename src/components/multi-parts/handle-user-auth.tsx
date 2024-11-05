@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../app/controllers/auth";
 import { setToken } from "../../app/controllers/api";
 import { toast } from "react-toastify";
-import { useDispatch, UseDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateUser } from "../../store/slices/userSlice";
 
 export const LoginUserComponent: React.FC<any> = ({ off, switchToPass }) => {

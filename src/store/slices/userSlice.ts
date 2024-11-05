@@ -25,7 +25,7 @@ const userSlice = createSlice({
         updateUser: (state, action) => {
             state.credentials = action.payload
         },
-        logOutUser: (state, action) => {
+        logOutUser: (state) => {
             state.credentials = {
                 email: "",
                 fullName: "",
