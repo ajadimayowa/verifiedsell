@@ -12,7 +12,7 @@ const SideBarAuth: React.FC<any> = ({ onSideBar, toggleSideBar}) => {
 
     const handleLogout = () => {
         navigate('/', { replace: true });
-       dispatch(logOutUser({}));
+       dispatch(logOutUser());
        persistor.flush()
         localStorage.clear()
     }
