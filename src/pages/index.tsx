@@ -7,9 +7,9 @@ import './index.css'
 import SideBarUnAuth from "../components/bars/sidebar";
 import LoginModal from "../components/modals/loginmodal";
 import { useNavigate } from "react-router-dom";
-import { getServices } from "../app/routes/service";
-import { IService } from "../interfaces/service";
-import { toast } from "react-toastify";
+// import { getServices } from "../app/routes/service";
+// import { IService } from "../interfaces/service";
+// import { toast } from "react-toastify";
 import playstore from '../assets/pngs/playstore.png';
 import appstore from '../assets/pngs/appstore.png';
 import CategoryCard from "../components/cards/categoryCard";
@@ -22,12 +22,12 @@ const HomePage = () => {
     const [regModal, setRegModal] = useState(false);
     const [loginModal, setLoginModal] = useState(false);
     const [onSideNav, setOnSideNav] = useState(false);
-    const [services, setServices] = useState<IService[]>([]);
-    const [allServices, setAllServices] = useState<IService[]>([]);
-    const [currentServicesPage, setCurrentServicesPage] = useState(1);
-    const [allServicePageNumber, setAllServicePageNumber] = useState(1);
-    const [refData, setRefData] = useState(false);
-    const [transit, setTransit] = useState(false);
+    // const [services, setServices] = useState<IService[]>([]);
+    // const [allServices, setAllServices] = useState<IService[]>([]);
+    // const [currentServicesPage, setCurrentServicesPage] = useState(1);
+    // const [allServicePageNumber, setAllServicePageNumber] = useState(1);
+    // const [refData, setRefData] = useState(false);
+    // const [transit, setTransit] = useState(false);
 
     const LoadingPage = () => {
 
@@ -40,76 +40,76 @@ const HomePage = () => {
         )
     }
 
-    const handleGetServices = async () => {
-        const res = await getServices(6, currentServicesPage)
-        const resAll = await getServices(15, currentServicesPage)
-        console.log(res)
-        if (res.success) {
-            setServices(res.data?.services);
-            setAllServices(resAll.data?.services);
-            setAllServicePageNumber(res.data.totalPages);
-        } else {
-            toast.error(res.error)
-        }
-    }
+    // const handleGetServices = async () => {
+    //     const res = await getServices(6, currentServicesPage)
+    //     const resAll = await getServices(15, currentServicesPage)
+    //     console.log(res)
+    //     if (res.success) {
+    //         setServices(res.data?.services);
+    //         setAllServices(resAll.data?.services);
+    //         setAllServicePageNumber(res.data.totalPages);
+    //     } else {
+    //         toast.error(res.error)
+    //     }
+    // }
 
-    useEffect(() => {
-        handleGetServices()
-    }, [refData])
-
-
-    const ourValues = [
-        {
-            title: 'Well veted proffesionals',
-            icon: 'bi bi-award-fill',
-            description:
-                'Get access to a pool of skilled industry professionals from all over Nigeria. for every task, at any price point.'
-        },
-        {
-            title: 'Pay per project delivery',
-            icon: 'bi bi-currency-exchange',
-            description:
-                'No monthly salary, just project-based pricing. Payments only get released when you approve.'
-        },
-        {
-            title: 'No delay in delivery',
-            icon: 'bi bi-stopwatch-fill',
-            description:
-                'Filter to find the right professionals quickly and get great work delivered in no time, every time.'
-        },
-        {
-            title: '24/7 Customer support',
-            icon: 'bi bi-headset',
-            description:
-                'Chat with our team to get your questions answered or resolve any issues with your orders.'
-        }
-
-    ]
+    // useEffect(() => {
+    //     handleGetServices()
+    // }, [refData])
 
 
+    // const ourValues = [
+    //     {
+    //         title: 'Well veted proffesionals',
+    //         icon: 'bi bi-award-fill',
+    //         description:
+    //             'Get access to a pool of skilled industry professionals from all over Nigeria. for every task, at any price point.'
+    //     },
+    //     {
+    //         title: 'Pay per project delivery',
+    //         icon: 'bi bi-currency-exchange',
+    //         description:
+    //             'No monthly salary, just project-based pricing. Payments only get released when you approve.'
+    //     },
+    //     {
+    //         title: 'No delay in delivery',
+    //         icon: 'bi bi-stopwatch-fill',
+    //         description:
+    //             'Filter to find the right professionals quickly and get great work delivered in no time, every time.'
+    //     },
+    //     {
+    //         title: '24/7 Customer support',
+    //         icon: 'bi bi-headset',
+    //         description:
+    //             'Chat with our team to get your questions answered or resolve any issues with your orders.'
+    //     }
 
-    const handleNextService = () => {
-        setTransit(!transit)
-        if (currentServicesPage == allServicePageNumber) {
-            setCurrentServicesPage(1);
-            setRefData(!refData)
-        } else {
-            setCurrentServicesPage(currentServicesPage + 1);
-            setRefData(!refData)
-        }
+    // ]
 
-    }
-    const handlePrevService = () => {
-        setTransit(!transit)
-        if (currentServicesPage == 1) {
-            setCurrentServicesPage(1)
-            setRefData(!refData)
-        } else {
-            setCurrentServicesPage(curr => curr - 1)
-            setRefData(!refData)
-        }
 
-    }
+
+    // const handleNextService = () => {
+    //     setTransit(!transit)
+    //     if (currentServicesPage == allServicePageNumber) {
+    //         setCurrentServicesPage(1);
+    //         setRefData(!refData)
+    //     } else {
+    //         setCurrentServicesPage(currentServicesPage + 1);
+    //         setRefData(!refData)
+    //     }
+
+    // }
+    // const handlePrevService = () => {
+    //     setTransit(!transit)
+    //     if (currentServicesPage == 1) {
+    //         setCurrentServicesPage(1)
+    //         setRefData(!refData)
+    //     } else {
+    //         setCurrentServicesPage(curr => curr - 1)
+    //         setRefData(!refData)
+    //     }
+
+    // }
 
 
 
@@ -199,38 +199,7 @@ const HomePage = () => {
 
 
 
-                        {
-                            services.length > 0 &&
-                            <div className="w-100 available-services mt-3 section-two">
-
-                                <h3 className="text-center">Available Services</h3>
-                                <div className="w-100 d-flex px-4 justify-content-center align-items-center mt-4">
-                                    <i className="bi bi-arrow-left-circle-fill text-primary" role="button" onClick={() => handlePrevService()}
-                                        style={{ fontSize: '1.5em' }}
-                                    ></i>
-                                    <div className="d-flex w-50 px-0 gap-2  justify-content-center align-items-center service-holder"
-                                        style={{ flexWrap: 'wrap', transition: 'all 1s ease-in' }}>
-                                        {
-                                            services.map((serv: IService, index: number) => (
-                                                <div onClick={() => navigate(`/category-view/${serv._id}`)} role="button" key={index} className={`d-flex flex-column card-holder gap-2 align-items-center ${transit && 'slide-form'}`}
-                                                    style={{ maxWidth: '7em', maxHeight: '10em', }}>
-                                                    <Card className="shadow-lg border-0 card"
-                                                        style={{ minWidth: '6em', minHeight: '6em' }}>
-                                                        <Card.Body className="d-flex flex-column align-items-center justify-content-center">
-                                                            <i className={` ${serv.icon}`} style={{ fontSize: '2em' }}></i>
-                                                        </Card.Body>
-                                                    </Card>
-                                                    <p className="niramit-semibold text-center"
-                                                        style={{ textWrap: 'wrap', wordWrap: 'break-word' }}>{serv.title}</p>
-                                                </div>
-
-                                            ))
-                                        }
-                                    </div>
-                                    <i className="bi bi-arrow-right-circle-fill text-primary" role="button" onClick={() => handleNextService()}
-                                        style={{ fontSize: '1.5em' }}></i>
-                                </div>
-                            </div>}
+                       
 
                         <div className="d-flex text-center p-3">
 
@@ -245,25 +214,7 @@ const HomePage = () => {
 
                                     id="services"
                                     style={{ transition: 'all 1s ease-in', overflowX: 'scroll', maxWidth: '100%' }}>
-                                    {
-                                        allServices.map((serv: any, index: number) => (
-                                            <div onClick={() => navigate(`/category-view/${serv._id}`)} key={index} role="button" className=""
-                                                style={{ minWidth: '10em', maxHeight: '15em', minHeight: '15em' }}>
-                                                <Card className="shadow-sm border-0"
-                                                    style={{ minWidth: '10em', minHeight: '14em', backgroundColor: serv.colorCode }}>
-                                                    <Card.Body className="text-light">
-                                                        <p className="niramit-semibold text-start"
-                                                            style={{ textWrap: 'wrap', wordWrap: 'break-word' }}>{serv.title}</p>
-                                                        <Card className="bg-light d-flex justify-content-center align-items-center w-100" style={{ minHeight: '7em' }}>
-                                                            <i className={` ${serv.icon}`} style={{ fontSize: '2em' }}></i>
-                                                        </Card>
-                                                    </Card.Body>
-                                                </Card>
-
-                                            </div>
-
-                                        ))
-                                    }
+                                    
                                 </div>
 
                             </div>

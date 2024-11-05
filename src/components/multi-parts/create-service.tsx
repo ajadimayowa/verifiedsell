@@ -13,29 +13,29 @@ export const ServiceStepOne: React.FC<any> = ({ handleStepDataSubmit, data }) =>
     const [services, setServices] = useState<IService[]>([]);
     const [refData, setRefData] = useState(false);
 
-    const getServices = async (limit: number, page: number) => {
-        const res = await api.get(`services?limit=${limit}&page=${page}`);
-        if (res.data) {
-            return { success: true, loading: false, data: res.data }
-        } else {
-            return { success: false, loading: false, error: res.statusText }
-        }
+    // const getServices = async (limit: number, page: number) => {
+    //     const res = await api.get(`services?limit=${limit}&page=${page}`);
+    //     if (res.data) {
+    //         return { success: true, loading: false, data: res.data }
+    //     } else {
+    //         return { success: false, loading: false, error: res.statusText }
+    //     }
 
-    }
+    // }
 
-    const handleGetServices = async () => {
-        const res = await getServices(10, 1)
-        console.log(res)
-        if (res.success) {
-            setServices(res.data?.services);
-            // setAllServicePageNumber(res.data.totalPages);
-        } else {
-            toast.error(res.error)
-        }
-    }
+    // const handleGetServices = async () => {
+    //     const res = await getServices(10, 1)
+    //     console.log(res)
+    //     if (res.success) {
+    //         setServices(res.data?.services);
+    //         // setAllServicePageNumber(res.data.totalPages);
+    //     } else {
+    //         toast.error(res.error)
+    //     }
+    // }
 
     useEffect(() => {
-        handleGetServices()
+        // handleGetServices()
     }, [refData])
 
     const handleSubmit = (val: any) => {
