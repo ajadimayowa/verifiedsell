@@ -14,6 +14,7 @@ import playstore from '../assets/pngs/playstore.png';
 import appstore from '../assets/pngs/appstore.png';
 import CategoryCard from "../components/cards/categoryCard";
 import ProductCard from "../components/cards/productCard";
+import InfoCard from "../components/cards/infoCard";
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -148,7 +149,7 @@ const HomePage = () => {
 
                         <div className="w-100 section-one bg-light px-4">
                             <h3 className="text-center w-100 p-3">Explore Categories</h3>
-                            <div className="d-flex w-100 align-items-center" style={{height:230, overflowX:'scroll', scrollbarWidth:'none'}}>
+                            <div className="d-flex w-100 align-items-center" style={{ height: 230, overflowX: 'scroll', scrollbarWidth: 'none' }}>
                                 <CategoryCard />
 
                                 <CategoryCard />
@@ -165,15 +166,34 @@ const HomePage = () => {
 
                         <div className="w-100 section-one bg-light px-4 mt-4">
                             <h3 className="text-center w-100 p-3">Hot Deals</h3>
-                            <div className="d-flex w-100 align-items-center  gap-2" style={{height:300, overflowX:'scroll', overflowY: 'hidden',scrollbarWidth:'none'}}>
-                                <ProductCard/>
-                                <ProductCard/>
-                                <ProductCard/>
-                                <ProductCard/>
+                            <div className="d-flex w-100 align-items-center  gap-2" style={{ height: 300, overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
 
-                                <ProductCard/>
-                                <ProductCard/>
-                                <ProductCard/>
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                            </div>
+                        </div>
+
+                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
+                            <div className="bg-gray" style={{width:'25%'}}>
+                                <InfoCard />
+                            </div>
+                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
                             </div>
                         </div>
 
@@ -294,9 +314,9 @@ const HomePage = () => {
                             </Card>
 
                         </div>
-                        <div className="text-center py-3 mt-3" style={{ backgroundColor: '#E9F4F2' }}>
-                            Powered by Floath Solution Hub
-                            <p>(+234)8166064166</p>
+                        <div className="d-flex flex-column text-center justify-content-end py-3 mt-3" style={{height:'300px', backgroundColor: '#E9F4F2', alignItems:'center' }}>
+                            <p className="m-0 p-0 fw-bold">Verified Sell All Rights Reserved</p>
+                            <p className="m-0 p-0">(+234)8166064166</p>
                         </div>
 
                         <SignupModal on={regModal} off={() => setRegModal(false)} onLogin={() => setLoginModal(true)} />
