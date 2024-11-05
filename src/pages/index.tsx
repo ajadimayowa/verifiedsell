@@ -277,25 +277,6 @@ const HomePage = () => {
 
                         </div>
 
-                        <div className="w-100 mt-5 px-3 section-5">
-                            {
-                                ourValues.map((values, index: number) =>
-                                    <div key={index} className="px-2 gap-3 d-flex flex-column">
-                                        <div className="d-flex gap-2 align-items-center">
-                                            <i className={`bi ${values.icon}`} style={{ fontSize: '1.7em' }}></i>
-                                            <h5>{values.title}</h5>
-                                        </div>
-
-                                        <p className="px-3">
-                                            {values.description}
-                                        </p>
-
-                                    </div>
-                                )
-                            }
-
-                        </div>
-
                         <div className="d-flex justify-content-center w-100 mt-5 section-6">
                             <Card className="shadow-sm border-0"
                                 style={{ minWidth: '20em', minHeight: '17em', backgroundColor: '#8D493A' }}>
