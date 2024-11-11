@@ -2,10 +2,16 @@
 import styles from './productCard.module.css'
 import laptopImg from '../../assets/images/laptop1.png';
 import { Button, Image } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 
-const ProductCard = () => {
+const ProductCard : React.FC<any> = ({prodId}) => {
+    const navigate = useNavigate()
+    const handleNavigateToProduct = ()=>{
+        navigate({pathname:`product-view/${prodId}`})
+
+    }
     return (
-        <div className={`${styles.container}`}>
+        <div className={`${styles.container}`} onClick={handleNavigateToProduct} role='button'>
             <div className={`${styles.prodImgContainer} d-flex justify-content-center align-items-center`}>
                     <Image className={`${styles.image}`} src={laptopImg}/>
             </div>

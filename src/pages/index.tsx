@@ -40,77 +40,6 @@ const HomePage = () => {
         )
     }
 
-    // const handleGetServices = async () => {
-    //     const res = await getServices(6, currentServicesPage)
-    //     const resAll = await getServices(15, currentServicesPage)
-    //     console.log(res)
-    //     if (res.success) {
-    //         setServices(res.data?.services);
-    //         setAllServices(resAll.data?.services);
-    //         setAllServicePageNumber(res.data.totalPages);
-    //     } else {
-    //         toast.error(res.error)
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     handleGetServices()
-    // }, [refData])
-
-
-    // const ourValues = [
-    //     {
-    //         title: 'Well veted proffesionals',
-    //         icon: 'bi bi-award-fill',
-    //         description:
-    //             'Get access to a pool of skilled industry professionals from all over Nigeria. for every task, at any price point.'
-    //     },
-    //     {
-    //         title: 'Pay per project delivery',
-    //         icon: 'bi bi-currency-exchange',
-    //         description:
-    //             'No monthly salary, just project-based pricing. Payments only get released when you approve.'
-    //     },
-    //     {
-    //         title: 'No delay in delivery',
-    //         icon: 'bi bi-stopwatch-fill',
-    //         description:
-    //             'Filter to find the right professionals quickly and get great work delivered in no time, every time.'
-    //     },
-    //     {
-    //         title: '24/7 Customer support',
-    //         icon: 'bi bi-headset',
-    //         description:
-    //             'Chat with our team to get your questions answered or resolve any issues with your orders.'
-    //     }
-
-    // ]
-
-
-
-    // const handleNextService = () => {
-    //     setTransit(!transit)
-    //     if (currentServicesPage == allServicePageNumber) {
-    //         setCurrentServicesPage(1);
-    //         setRefData(!refData)
-    //     } else {
-    //         setCurrentServicesPage(currentServicesPage + 1);
-    //         setRefData(!refData)
-    //     }
-
-    // }
-    // const handlePrevService = () => {
-    //     setTransit(!transit)
-    //     if (currentServicesPage == 1) {
-    //         setCurrentServicesPage(1)
-    //         setRefData(!refData)
-    //     } else {
-    //         setCurrentServicesPage(curr => curr - 1)
-    //         setRefData(!refData)
-    //     }
-
-    // }
-
 
 
     return (
@@ -167,11 +96,50 @@ const HomePage = () => {
                         <div className="w-100 section-one bg-light px-4 mt-4">
                             <h3 className="text-center w-100 p-3">Hot Deals</h3>
                             <div className="d-flex w-100 align-items-center  gap-2" style={{ height: 300, overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
+                                <ProductCard prodId={872382} />
+                                <ProductCard prodId={872382}/>
+                                <ProductCard prodId={872382}/>
+                                <ProductCard prodId={872382}/>
 
+                                <ProductCard prodId={872382} />
+                                <ProductCard prodId={872382}/>
+                                <ProductCard prodId={872382}/>
+                            </div>
+                        </div>
+
+                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
+                            <div className="bg-gray" style={{width:'25%'}}>
+                                <InfoCard title='Best Sellers in Clothing, Shoes & Jewelry' />
+                            </div>
+                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                            </div>
+                        </div>
+
+
+                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
+                            <div className="bg-gray" style={{width:'25%'}}>
+                                <InfoCard title={'Must-haves for content creators and streamers.'} />
+                            </div>
+                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
                                 <ProductCard />
                                 <ProductCard />
                                 <ProductCard />
@@ -180,7 +148,64 @@ const HomePage = () => {
 
                         <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
                             <div className="bg-gray" style={{width:'25%'}}>
-                                <InfoCard />
+                                <InfoCard title={'Best Deals on Sports & Outdoor.'} />
+                            </div>
+                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                            </div>
+                        </div>
+
+                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
+                            <div className="bg-gray" style={{width:'25%'}}>
+                                <InfoCard title={'Best Deals on laptops and Elecronics'} />
+                            </div>
+                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                            </div>
+                        </div>
+
+                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
+                            <div className="bg-gray" style={{width:'25%'}}>
+                                <InfoCard title={'Automobile and Machines.'} />
+                            </div>
+                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                                <ProductCard />
+                            </div>
+                        </div>
+
+                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
+                            <div className="bg-gray" style={{width:'25%'}}>
+                                <InfoCard title={'Beauty, Cosmetics & Personal Care.'} />
                             </div>
                             <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
                             <ProductCard />

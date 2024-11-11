@@ -8,6 +8,7 @@ import CreateServicePage from "./pages/dashboard/create-gig-page";
 import KycPage from "./pages/dashboard/kyc-page";
 import OtpVerificationPage from "./pages/unsecured/verification-page";
 import CategoryViewPage from "./pages/unsecured/category-view-page";
+import ProductViewPage from "./pages/product-view-page";
 
 
 export default () => {
@@ -16,6 +17,7 @@ export default () => {
             <Route path="*" element={<ErrorPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/verify" element={<OtpVerificationPage />} />
+            <Route path="/product-view/:id" element={<ProductViewPage />} />
             <Route path="/category-view/:id" element={<CategoryViewPage />} />
             <Route path="/dashboard" element={<DashboardContainer />}>
                 <Route index element={<DashboardPage />} />

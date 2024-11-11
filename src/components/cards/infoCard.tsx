@@ -3,12 +3,12 @@ import styles from './infoCard.module.css';
 import laptopImg from '../../assets/images/apple-pro.jpg';
 import {Image } from "react-bootstrap";
 
-const InfoCard = () => {
+const InfoCard : React.FC<any> = ({title}) => {
     return (
         <div className={`${styles.container} shadow shadow-sm`}>
             <div className={`d-flex flex-column p-2`}>
                 <h2 className="fw-bold">
-                    Must-haves for content creators and streamers.
+                    {title}
                 </h2>
                 <p className="w-100 text-info" role="button">Shop Now </p>
 
