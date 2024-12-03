@@ -5,6 +5,7 @@
     align-items: center;
     height: 230px;
     width: 230px;
+
 }
 
 .circle {
@@ -13,7 +14,7 @@
     min-height: 180px;
     min-width: 180px;
     border-radius: 180px;
-    background-color: rgb(234, 234, 234);
+    background-color: rgb(246, 244, 244);
 
 }
 

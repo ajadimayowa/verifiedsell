@@ -7,14 +7,12 @@ import './index.css'
 import SideBarUnAuth from "../components/bars/sidebar";
 import LoginModal from "../components/modals/loginmodal";
 import { useNavigate } from "react-router-dom";
-// import { getServices } from "../app/routes/service";
-// import { IService } from "../interfaces/service";
-// import { toast } from "react-toastify";
 import playstore from '../assets/pngs/playstore.png';
 import appstore from '../assets/pngs/appstore.png';
 import CategoryCard from "../components/cards/categoryCard";
 import ProductCard from "../components/cards/productCard";
 import InfoCard from "../components/cards/infoCard";
+import { productCategories, products } from "../constants";
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -79,31 +77,22 @@ const HomePage = () => {
                         <div className="w-100 section-one bg-light px-4">
                             <h3 className="text-center w-100 p-3">Explore Categories</h3>
                             <div className="d-flex w-100 align-items-center" style={{ height: 230, overflowX: 'scroll', scrollbarWidth: 'none' }}>
-                                <CategoryCard />
-
-                                <CategoryCard />
-                                <CategoryCard />
-                                <CategoryCard />
-                                <CategoryCard />
-
-                                <CategoryCard />
-                                <CategoryCard />
-                                <CategoryCard />
-                                <CategoryCard />
+                                {
+                                    productCategories.map((product)=>(
+                                        <CategoryCard categoryTitle={product.title} imageUrl={product.catImageUrl} />
+                                    ))
+                                }
                             </div>
                         </div>
 
-                        <div className="w-100 section-one bg-light px-4 mt-4">
-                            <h3 className="text-center w-100 p-3">Hot Deals</h3>
-                            <div className="d-flex w-100 align-items-center  gap-2" style={{ height: 300, overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
-                                <ProductCard prodId={872382} />
-                                <ProductCard prodId={872382}/>
-                                <ProductCard prodId={872382}/>
-                                <ProductCard prodId={872382}/>
-
-                                <ProductCard prodId={872382} />
-                                <ProductCard prodId={872382}/>
-                                <ProductCard prodId={872382}/>
+                        <div className="w-100 section-one px-4 mt-3" style={{backgroundColor: `rgb(221, 252, 252)`}}>
+                            <h3 className="text-center w-100 p-0">Hot Deals</h3>
+                            <div className="d-flex w-100 p-0 mt-4 gap-2" style={{ height: 400, overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none'}}>
+                                {
+                                    products.map((prod)=>(
+                                        <ProductCard prodId={prod.id} productTitle={prod.title} productPrice={prod.price} productImage={prod.prodImageUrl}/>
+                                    ))
+                                }
                             </div>
                         </div>
 
@@ -230,37 +219,15 @@ const HomePage = () => {
 
                             <hr className="px-3 w-100" />
                         </div>
-                        <div className="w-100 mt-3 section-three" id="section-three">
-
-                            <h3 className="text-center">Most Wanted Services</h3>
-                            <div className="w-100 d-flex gap-2 px-2 justify-content-center align-items-center mt-4">
-                                {/* <i className="bi bi-chevron-left" role="button" onClick={() => handlePrevServicePop(currentServicePopular)}></i> */}
-                                <div className="d-flex gap-3 w-100  align-items-center slide-form"
-
-                                    id="services"
-                                    style={{ transition: 'all 1s ease-in', overflowX: 'scroll', maxWidth: '100%' }}>
-                                    
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div className="w-100 mt-4 section-4">
-
-                            <h3 className="px-3 w-75">
-                                Connecting you to a whole new approach to service delivery.
-                            </h3>
-
-                        </div>
 
                         <div className="d-flex justify-content-center w-100 mt-5 section-6">
-                            <Card className="shadow-sm border-0"
-                                style={{ minWidth: '20em', minHeight: '17em', backgroundColor: '#8D493A' }}>
+                            <Card className="shadow-sm border-0 bg-primary"
+                                style={{ minWidth: '20em', minHeight: '17em'}}>
                                 <Card.Body className="d-flex text-light flex-column align-items-center justify-content-center">
                                     <i className="" style={{ fontSize: '2em' }}></i>
                                     <h3 className="niramit-semibold text-center"
                                         style={{ textWrap: 'wrap', wordWrap: 'break-word' }}>
-                                        Quality service at the comfort of Home
+                                        Shop with confidence!!!
                                     </h3>
                                     <Button
                                         onClick={() => setRegModal(true)}
@@ -273,7 +240,6 @@ const HomePage = () => {
                         </div>
                         <div className="d-flex flex-column text-center justify-content-end py-3 mt-3" style={{height:'300px', backgroundColor: '#E9F4F2', alignItems:'center' }}>
                             <p className="m-0 p-0 fw-bold">Verified Sell All Rights Reserved</p>
-                            <p className="m-0 p-0">(+234)8166064166</p>
                         </div>
 
                         <SignupModal on={regModal} off={() => setRegModal(false)} onLogin={() => setLoginModal(true)} />

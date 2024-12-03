@@ -5,17 +5,69 @@ import team from '../assets/images/ecommerce.png';
 import './prodView.css'
 import SideBarUnAuth from "../components/bars/sidebar";
 import LoginModal from "../components/modals/loginmodal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProductCard from "../components/cards/productCard";
 import InfoCard from "../components/cards/infoCard";
-import { Button } from "react-bootstrap";
+import {Image } from "react-bootstrap";
+import { products } from "../constants";
+import PaymentInfoModal from "../components/modals/paymentInfomodal";
 
+
+export interface IProduct {
+    id: string,
+    catId: string,
+    title: string,
+    prodDescription: string,
+    prodImageUrl: string,
+    price: string,
+    section: string
+
+}
+
+export interface IPayment {
+    title: string,
+        method:string,
+        email: string,
+        tag: string
+}
+
+const paymentMenthods = [
+    {
+        title: 'Paypal',
+        method:'paypal',
+        icons: 'https://verifiedsell.s3.eu-north-1.amazonaws.com/product-categories/phones%26tablets/paypal.png',
+        id: '0'
+    },
+    {
+        title: 'Zelle',
+        method:'zelle',
+        icons: 'https://verifiedsell.s3.eu-north-1.amazonaws.com/product-categories/phones%26tablets/zelle.png',
+        id: '0'
+    },
+    {
+        title: 'Cashapp',
+        method:'cashapp',
+        icons: 'https://verifiedsell.s3.eu-north-1.amazonaws.com/product-categories/phones%26tablets/cashapp.png',
+        id: '0'
+    },
+    {
+        title: 'Venmo',
+        method:'venmo',
+        icons: 'https://verifiedsell.s3.eu-north-1.amazonaws.com/product-categories/phones%26tablets/venmo.png',
+        id: '0'
+    },
+]
 const ProductViewPage = () => {
     const navigate = useNavigate()
     const token: string = localStorage.getItem('userToken') || ''
     const [regModal, setRegModal] = useState(false);
+    const [paymentModal, setPaymentModal] = useState(false);
     const [loginModal, setLoginModal] = useState(false);
     const [onSideNav, setOnSideNav] = useState(false);
+    const { id } = useParams() || '';
+    const [selectedProduct, setSelectedProduct] = useState<IProduct[]>([]);
+    const [paymentDetails,setPaymentDetails] = useState<IPayment>();
+    
     // const [services, setServices] = useState<IService[]>([]);
     // const [allServices, setAllServices] = useState<IService[]>([]);
     // const [currentServicesPage, setCurrentServicesPage] = useState(1);
@@ -34,8 +86,77 @@ const ProductViewPage = () => {
         )
     }
 
+    const handleSelectedProd = () => {
+        let filtered = products.filter((prod: IProduct) => prod.id === id);
+        // console.log({filt:filtered, id:id})
+        // toast.success(filtered[0].title)
+        setSelectedProduct(filtered)
+
+    }
+
+    
+
+    useEffect(() => {
+        handleSelectedProd()
+    }, [id])
 
 
+    const handleShowPaymentInfo = (type: string) => {
+        setPaymentModal(true);
+        switch (type) {
+            case '':
+                // Handle the case where `type` is an empty string
+                console.log("Type is empty");
+                break;
+    
+            case 'paypal':
+                setPaymentDetails({
+                    title:'Paypal',
+                    method:'paypal',
+                    email:import.meta.env.VITE_APP_PAYPAL_EMAIL,
+                    tag:import.meta.env.VITE_APP_PAYPAL_TAG,
+                    
+                })
+                break;
+    
+            case 'zelle':
+                // Handle the case where `type` is 'paypal'
+                setPaymentDetails({
+                    title:'Zelle',
+                    method:'zelle',
+                    email:import.meta.env.VITE_APP_ZELLE_EMAIL,
+                    tag:import.meta.env.VITE_APP_ZELLE_TAG,
+                    
+                })
+                
+                break;
+
+            case 'venmo':
+                setPaymentDetails({
+                    title:'Venmo',
+                    method:'venmo',
+                    email:import.meta.env.VITE_APP_VENMO_EMAIL,
+                    tag:import.meta.env.VITE_APP_VENMO_TAG,
+                    
+                })
+                break;
+
+            case 'cashapp':
+                setPaymentDetails({
+                    title:'CashApp',
+                    method:'cashapp',
+                    email:import.meta.env.VITE_APP_CASHAPP_EMAIL,
+                    tag:import.meta.env.VITE_APP_CASHAPP_TAG,
+                    
+                })
+                break;
+    
+            default:
+                // Handle other cases (or invalid `type`)
+                console.log("Unknown payment type");
+                break;
+        }
+    };
     return (
         <div className="container-fluid p-0 m-0 w-100 min-vh-100" style={{ zIndex: 5, overflowY: 'hidden' }}>
             {
@@ -50,7 +171,7 @@ const ProductViewPage = () => {
                         <div className="w-100 section-one shadow shadow-sm p-4">
 
                             <div className={`topBannerImg right mt-4 justify-content-center`} style={{ overflowX: 'scroll', scrollbarWidth: 'none' }}>
-                                <img className="img" src={team} />
+                                <img className="img" src={selectedProduct[0]?.prodImageUrl} />
                                 <div className="d-flex gap-4 mt-3">
                                     {
                                         Array.from({ length: 5 }).map((_, index) => (
@@ -63,21 +184,32 @@ const ProductViewPage = () => {
 
                             <div className="left d-flex flex-column mt-4 gap-2">
                                 <h5 className="fw-bolder fs-1">
-                                    Macbook Pro 2024 | 16', Silver.
+                                    {selectedProduct[0]?.title}
                                 </h5>
                                 <p className="fw-bold">About this item</p>
                                 <p>
 
-                                    【Multi-Platform Compatible】Support PlayStation 4, New Xbox One, PC, Nintendo 3DS, Laptop, PSP, Tablet, iPad, Computer, Mobile Phone. Please note you need an extra Microsoft Adapter (Not Included) when connect with an old version Xbox One controller.
-                                    【Surrounding Stereo Subwoofer】Clear sound operating strong brass, splendid ambient noise isolation and high precision 40mm magnetic neodymium driver, acoustic positioning precision enhance the sensitivity of the speaker unit, bringing you vivid sound field, sound clarity, shock feeling sound. Perfect for various games like Halo 5 Guardians, Metal Gear Solid, Call of Duty, Star Wars Battlefront, Overwatch, World of Warcraft Legion, etc.
-                                    【Noise Isolating Microphone】Headset integrated onmi-directional microphone can transmits high quality communication with its premium noise-concellng feature, can pick up sounds with great sensitivity and remove the noise, which enables you clearly deliver or receive messages while you are in a game. Long flexible mic design very convenient to adjust angle of the microphone.
-                                    【Great Humanized Design】Superior comfortable and good air permeability protein over-ear pads, muti-points headbeam, acord with human body engineering specification can reduce hearing impairment and heat sweat.Skin friendly leather material for a longer period of wearing. Glaring LED lights desigend on the earcups to highlight game atmosphere.
-                                    【Effortlessly Volume Control】High tensile strength, anti-winding braided USB cable with rotary volume controller and key microphone mute effectively prevents the 49-inches long cable from twining and allows you to control the volume easily and mute the mic as effortless volume control one key mute.
+                                    {
+                                        selectedProduct[0]?.prodDescription
+                                    }
+
                                 </p>
-                                <div className="d-flex gap-2">
-                                <Button>Contact Seller</Button>
-                                <Button variant="success">Add to cart</Button>
+
+                                <div className="">
+                                    <p>Select your payment method</p>
+                                    <div className="d-flex gap-2">
+                                        {
+                                            paymentMenthods.map((pay) => (
+                                               <Image height={34} onClick={()=>handleShowPaymentInfo(pay.method)} 
+                                               role="button" src={pay.icons} className={pay.icons}/>))
+                                        }
+                                    </div>
                                 </div>
+
+                                {/* <div className="d-flex gap-2">
+                                    <Button>Contact Seller</Button>
+                                    <Button variant="success">Add to cart</Button>
+                                </div> */}
                             </div>
 
 
@@ -114,6 +246,7 @@ const ProductViewPage = () => {
                             <p className="m-0 p-0">(+234)8166064166</p>
                         </div>
 
+                        <PaymentInfoModal paymentInfo={paymentDetails} on={paymentModal} off={() => setPaymentModal(false)} onLogin={() => setLoginModal(true)} />
                         <SignupModal on={regModal} off={() => setRegModal(false)} onLogin={() => setLoginModal(true)} />
                         <LoginModal on={loginModal} off={() => setLoginModal(false)} />
                     </>
