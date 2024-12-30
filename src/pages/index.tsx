@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SignupModal from "../components/modals/signupmodal";
-import { Button, Card} from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import TopBarUnAuth from "../components/bars/topbar";
 import team from '../assets/images/ecommerce.png';
 import './index.css'
@@ -13,6 +13,7 @@ import CategoryCard from "../components/cards/categoryCard";
 import ProductCard from "../components/cards/productCard";
 import InfoCard from "../components/cards/infoCard";
 import { productCategories, products } from "../constants";
+import { IProduct } from "./product-view-page";
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -72,148 +73,73 @@ const HomePage = () => {
 
                         </div>
 
-
-
                         <div className="w-100 section-one bg-light px-4">
                             <h3 className="text-center w-100 p-3">Explore Categories</h3>
                             <div className="d-flex w-100 align-items-center" style={{ height: 230, overflowX: 'scroll', scrollbarWidth: 'none' }}>
                                 {
-                                    productCategories.map((product)=>(
+                                    productCategories.map((product) => (
                                         <CategoryCard categoryTitle={product.title} imageUrl={product.catImageUrl} />
                                     ))
                                 }
                             </div>
                         </div>
 
-                        <div className="w-100 section-one px-4 mt-3" style={{backgroundColor: `rgb(221, 252, 252)`}}>
-                            <h3 className="text-center w-100 p-0">Hot Deals</h3>
-                            <div className="d-flex w-100 p-0 mt-4 gap-2" style={{ height: 400, overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none'}}>
+                        <div className="w-100 section-one px-4" style={{ backgroundColor: `rgb(221, 252, 252)` }}>
+                            <h3 className="text-center w-100 p-0 mt-4">Hot Deals</h3>
+                            <div className="d-flex w-100 p-0 mt-4 gap-2" style={{ height: 400, overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
                                 {
-                                    products.map((prod)=>(
-                                        <ProductCard prodId={prod.id} productTitle={prod.title} productPrice={prod.price} productImage={prod.prodImageUrl}/>
-                                    ))
+                                    products.filter((prod: IProduct) => prod.section == 'hotdeals').map((prod: IProduct) => (<ProductCard prodId={prod.id} productTitle={prod.title} productPrice={prod.price} productImage={prod.prodImageUrl} />))
                                 }
                             </div>
                         </div>
 
-                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
-                            <div className="bg-gray" style={{width:'25%'}}>
-                                <InfoCard title='Best Sellers in Clothing, Shoes & Jewelry' />
-                            </div>
-                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
-                            <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                            </div>
+                        <h2 className="fw-bold w-100 p-3 mt-4">Best Sellers in Clothing, Shoes & Jewelry</h2>
+                        <div className="w-100 d-flex px-4 mt-4 gap-2 p-2" style={{ width: '100%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <InfoCard imgUrl={`https://verifiedsell.s3.eu-north-1.amazonaws.com/verifiedsell-assets/product-pictures/Nike+Travis+Scott+Air+Jordan+1+Low+OG+SP+EU+49.5+US+15+Medium+Olive+Reverse+NEW.png`} />
+                            {
+                                products.filter((prod: IProduct) => prod.section == 'fashion').map((prod: IProduct) => (<ProductCard prodId={prod.id} productTitle={prod.title} productPrice={prod.price} productImage={prod.prodImageUrl} />))
+                            }
                         </div>
 
-
-                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
-                            <div className="bg-gray" style={{width:'25%'}}>
-                                <InfoCard title={'Must-haves for content creators and streamers.'} />
-                            </div>
-                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
-                            <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                            </div>
+                        <h2 className="fw-bold w-100 p-3 mt-4">Must-haves for content creators and streamers.</h2>
+                        <div className="w-100 d-flex px-4 mt-4 gap-2 p-2" style={{ width: '100%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <InfoCard imgUrl={'https://verifiedsell.s3.eu-north-1.amazonaws.com/product-categories/phones%26tablets/truckBus.png'} />
+                            {
+                                products.filter((prod: IProduct) => prod.section == 'content').map((prod: IProduct) => (<ProductCard prodId={prod.id} productTitle={prod.title} productPrice={prod.price} productImage={prod.prodImageUrl} />))
+                            }
                         </div>
 
-                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
-                            <div className="bg-gray" style={{width:'25%'}}>
-                                <InfoCard title={'Best Deals on Sports & Outdoor.'} />
-                            </div>
-                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
-                            <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                            </div>
+                        <h2 className="fw-bold w-100 p-3 mt-4">Best Deals on Sport & Fitness.</h2>
+                        <div className="w-100 d-flex px-4 mt-4 gap-2 p-2" style={{ width: '100%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <InfoCard imgUrl={'https://verifiedsell.s3.eu-north-1.amazonaws.com/product-categories/phones%26tablets/truckBus.png'} />
+                            {
+                                products.filter((prod: IProduct) => prod.section == 'fitness').map((prod: IProduct) => (<ProductCard prodId={prod.id} productTitle={prod.title} productPrice={prod.price} productImage={prod.prodImageUrl} />))
+                            }
                         </div>
 
-                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
-                            <div className="bg-gray" style={{width:'25%'}}>
-                                <InfoCard title={'Best Deals on laptops and Elecronics'} />
-                            </div>
-                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
-                            <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                            </div>
+                        <h2 className="fw-bold w-100 p-3 mt-4">Best Deals on laptops and Elecronics.</h2>
+                        <div className="w-100 d-flex px-4 mt-4 gap-2 p-2" style={{ width: '100%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <InfoCard imgUrl={'https://verifiedsell.s3.eu-north-1.amazonaws.com/product-categories/phones%26tablets/truckBus.png'} />
+                            {
+                                products.filter((prod: IProduct) => prod.section == 'electronics').map((prod: IProduct) => (<ProductCard prodId={prod.id} productTitle={prod.title} productPrice={prod.price} productImage={prod.prodImageUrl} />))
+                            }
                         </div>
 
-                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
-                            <div className="bg-gray" style={{width:'25%'}}>
-                                <InfoCard title={'Automobile and Machines.'} />
-                            </div>
-                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
-                            <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                            </div>
+                        <h2 className="fw-bold w-100 p-3 mt-4">Automobile and Machines.</h2>
+                        <div className="w-100 d-flex px-4 mt-4 gap-2 p-2" style={{ width: '100%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <InfoCard imgUrl={'https://verifiedsell.s3.eu-north-1.amazonaws.com/product-categories/phones%26tablets/truckBus.png'} />
+                            {
+                                products.filter((prod: IProduct) => prod.section == 'auto').map((prod: IProduct) => (<ProductCard prodId={prod.id} productTitle={prod.title} productPrice={prod.price} productImage={prod.prodImageUrl} />))
+                            }
                         </div>
 
-                        <div className="w-100 d-flex align-items-center flex-wrap px-4 mt-4 p-2">
-                            <div className="bg-gray" style={{width:'25%'}}>
-                                <InfoCard title={'Beauty, Cosmetics & Personal Care.'} />
-                            </div>
-                            <div className="d-flex gap-2 py-4 align-items-center w-75" style={{ width:'75%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
-                            <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                                <ProductCard />
-                            </div>
+                        <h2 className="fw-bold w-100 p-3 mt-4">Beauty, Cosmetics & Personal Care.</h2>
+                        <div className="w-100 d-flex px-4 mt-4 gap-2 p-2" style={{ width: '100%', overflowX: 'scroll', overflowY: 'hidden', scrollbarWidth: 'none' }}>
+                            <InfoCard imgUrl={'https://verifiedsell.s3.eu-north-1.amazonaws.com/product-categories/phones%26tablets/truckBus.png'} />
+                            {
+                                products.filter((prod: IProduct) => prod.section == 'cosmetics').map((prod: IProduct) => (<ProductCard prodId={prod.id} productTitle={prod.title} productPrice={prod.price} productImage={prod.prodImageUrl} />))
+                            }
                         </div>
-
-
-
-                       
 
                         <div className="d-flex text-center p-3">
 
@@ -222,7 +148,7 @@ const HomePage = () => {
 
                         <div className="d-flex justify-content-center w-100 mt-5 section-6">
                             <Card className="shadow-sm border-0 bg-primary"
-                                style={{ minWidth: '20em', minHeight: '17em'}}>
+                                style={{ minWidth: '20em', minHeight: '17em' }}>
                                 <Card.Body className="d-flex text-light flex-column align-items-center justify-content-center">
                                     <i className="" style={{ fontSize: '2em' }}></i>
                                     <h3 className="niramit-semibold text-center"
@@ -238,8 +164,8 @@ const HomePage = () => {
                             </Card>
 
                         </div>
-                        <div className="d-flex flex-column text-center justify-content-end py-3 mt-3" style={{height:'300px', backgroundColor: '#E9F4F2', alignItems:'center' }}>
-                            <p className="m-0 p-0 fw-bold">Verified Sell All Rights Reserved</p>
+                        <div className="d-flex flex-column text-center justify-content-end py-3 mt-3" style={{ height: '100px', backgroundColor: '#E9F4F2', alignItems: 'center' }}>
+                            <p className="m-0 p-0 fw-bold">Verified Sell All Rights Reserved.</p>
                         </div>
 
                         <SignupModal on={regModal} off={() => setRegModal(false)} onLogin={() => setLoginModal(true)} />

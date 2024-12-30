@@ -4,7 +4,6 @@
     align-items: center;
     height: 250px;
     width: 230px;
-
     max-width: 230;
 }
 
@@ -50,5 +49,14 @@
     
     .image {
         height: 70px;
+    }
+
+    .prodImgContainer:hover {
+        height: 135px;
+        width: 110px;
+        min-height: 175px;
+        min-width: 155px;
+        background-color: rgb(252, 252, 252);
+    
     }
 }
